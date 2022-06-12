@@ -1,0 +1,25 @@
+<div class="container">
+    <h2>Biblioteca</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <p>A continuación, se muestra el listado de libros</p>
+            <ul class="list-group">
+                <ng-container *ngFor="let item of listaLibros">
+                    <li class="list-group-item"> {{item.titulo}} - {{item.id_autor.apellidos}},
+                        {{item.id_autor.nombres}} </li>
+                </ng-container>
+
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <p>A continuacion, se muestra el listado de articulos
+            </p>
+            <ul class="list-group">
+                <ng-container *ngFor="let articulo of listaArticulos">
+                    <li class="list-group-item"> {{articulo.titulo}} - <ng-container *ngFor="let autor of articulo.autores">
+                        {{autor.apellidos}}, {{autor.nombres}}, </ng-container>  </li>
+                </ng-container>
+            </ul>
+        </div>
+    </div>
+</div>
