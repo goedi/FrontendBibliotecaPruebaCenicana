@@ -23,8 +23,6 @@ export class BibliotecaComponent implements OnInit {
     this.bibliotecaService.listarArticulos().subscribe(
       response =>{
         this.listaArticulos = response.respuesta
-        console.log(this.listaArticulos);
-        
       }
     )
 

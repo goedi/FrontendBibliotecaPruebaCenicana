@@ -1,0 +1,95 @@
+<div class="container">
+    <h4>Libros</h4>
+    <div class="row">
+        <p>aqui puedes registrar libro nuevos </p>
+        <button class="col-md-3 btn btn-primary" [routerLink]="['/biblioteca/libros']">regresar</button>
+    </div>
+    <hr>
+    <form [formGroup]="editarLibro" (ngSubmit)="onSubmit()">
+        <div class="mb-3 row">
+            <label for="isbn" class="col-sm-2 form-label">ISBN</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="isbn" formControlName="isbn"
+                    [ngClass]="{ 'is-invalid': submitted && f.isbn.errors }">
+                <div class="alert alert-danger" role="alert" *ngIf="submitted && f.isbn.errors">
+                    <div *ngIf="f.isbn.errors.required">
+                        El codigo ISBN del libro es necesario
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="titulo" class="col-sm-2 form-label">Titulo</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="titulo" formControlName="titulo"
+                    [ngClass]="{ 'is-invalid': submitted && f.titulo.errors }">
+                <div class="alert alert-danger" role="alert" *ngIf="submitted && f.titulo.errors">
+                    <div *ngIf="f.titulo.errors.required">
+                        Es obligatorio el titulo del libro
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="fecha_publicacion" class="col-sm-2 form-label">Fecha publicacion</label>
+            <div class="col-sm-10">
+                <input type="date" class="form-control" id="fecha_publicacion" formControlName="fecha_publicacion"
+                    [ngClass]="{ 'is-invalid': submitted && f.fecha_publicacion.errors }">
+                <div class="alert alert-danger" role="alert" *ngIf="submitted && f.fecha_publicacion.errors">
+                    <div *ngIf="f.fecha_publicacion.errors.required">
+                        La fecha de publicación es necesaria
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="idioma_original" class="col-sm-2 form-label">Idioma original</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="idioma_original" formControlName="idioma_original"
+                    [ngClass]="{ 'is-invalid': submitted && f.idioma_original.errors }">
+                <div class="alert alert-danger" role="alert" *ngIf="submitted && f.idioma_original.errors">
+                    <div *ngIf="f.idioma_original.errors.required">
+                        Es necesario el idioma original de la publicación
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="id_autor" class="col-sm-2 form-label">Autor</label>
+            <div class="col-sm-10">
+                <input class="form-control" list="id_autor" formControlName="id_autor" placeholder="Type to search..."
+                    [ngClass]="{ 'is-invalid': submitted && f.id_autor.errors }">
+                <div class="alert alert-danger" role="alert" *ngIf="submitted && f.id_autor.errors">
+                    <div *ngIf="f.id_autor.errors.required">
+                        Selecione uno de los autores
+                    </div>
+                </div>
+                <datalist id="id_autor">
+                    <ng-container *ngFor="let item of listaAutores">
+                        <option value="{{item.nombres}} {{item.apellidos}} - {{item.identificacion}}">
+                    </ng-container>
+
+                </datalist>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="resumen" class="col-sm-2 form-label">Resumen</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" id="resumen" rows="3" formControlName="resumen"
+                    [ngClass]="{ 'is-invalid': submitted && f.id_autor.errors }"></textarea>
+                <div class="alert alert-danger" role="alert" *ngIf="submitted && f.id_autor.errors">
+                    <div *ngIf="f.id_autor.errors.required">
+                        El resumen de libro es importante
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-around">
+            <div class="col-4">
+                <button class="col-4" type="submit" class="btn btn-success">Guardar</button>
+            </div>
+
+        </div>
+    </form>
+</div>

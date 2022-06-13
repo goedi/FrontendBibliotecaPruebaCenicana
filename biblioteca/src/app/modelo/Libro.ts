@@ -8,5 +8,4 @@ export class Libro {
     fecha_publicacion = new Date
     id_autor = new Autor
     estado: boolean = true
-    autores: Autor = new Autor
 }
