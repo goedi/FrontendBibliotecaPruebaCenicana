@@ -14,6 +14,9 @@ import { LibroCreateComponent } from './modulo/libro/libro-create/libro-create.c
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { LibroEditComponent } from './modulo/libro/libro-edit/libro-edit.component';
+import { ArticuloListComponent } from './modulo/articulo/articulo-list/articulo-list.component';
+import { ArticuloCreateComponent } from './modulo/articulo/articulo-create/articulo-create.component';
+import { ArticuloUpdateComponent } from './modulo/articulo/articulo-update/articulo-update.component';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import { LibroEditComponent } from './modulo/libro/libro-edit/libro-edit.compone
     NavbarComponent,
     LibroListComponent,
     LibroCreateComponent,
-    LibroEditComponent
+    LibroEditComponent,
+    ArticuloListComponent,
+    ArticuloCreateComponent,
+    ArticuloUpdateComponent
   ],
   imports: [
     BrowserModule,
