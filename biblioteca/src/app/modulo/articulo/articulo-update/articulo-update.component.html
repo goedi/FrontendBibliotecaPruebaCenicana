@@ -1,1 +1,106 @@
-<p>articulo-update works!</p>
+<div class="container">
+    <h4>Articulos</h4>
+    <div class="row">
+        <p>aqui puedes registrar Articulos nuevos </p>
+        <button class="col-md-3 btn btn-primary" [routerLink]="['/biblioteca/articulo']">regresar</button>
+    </div>
+    <hr>
+    <form [formGroup]="updateArticulos" >
+        <div class="mb-3 row">
+            <label for="issn" class="col-sm-2 form-label">ISSN</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="issn" formControlName="issn"
+                    [ngClass]="{ 'is-invalid': submitted && f.issn.errors }">
+                <div class="alert alert-danger" role="alert" *ngIf="submitted && f.issn.errors">
+                    <div *ngIf="f.issn.errors.required">
+                        El codigo ISSN del libro es necesario
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="titulo" class="col-sm-2 form-label">Titulo</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="titulo" formControlName="titulo"
+                    [ngClass]="{ 'is-invalid': submitted && f.titulo.errors }">
+                <div class="alert alert-danger" role="alert" *ngIf="submitted && f.titulo.errors">
+                    <div *ngIf="f.titulo.errors.required">
+                        Es obligatorio el titulo del articulo
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="fecha_publicacion" class="col-sm-2 form-label">Fecha publicacion</label>
+            <div class="col-sm-10">
+                <input type="date" class="form-control" id="fecha_publicacion" formControlName="fecha_publicacion"
+                    [ngClass]="{ 'is-invalid': submitted && f.fecha_publicacion.errors }">
+                <div class="alert alert-danger" role="alert" *ngIf="submitted && f.fecha_publicacion.errors">
+                    <div *ngIf="f.fecha_publicacion.errors.required">
+                        La fecha de publicación es necesaria
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="publicacion" class="col-sm-2 form-label">publicacion</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="publicacion" formControlName="publicacion"
+                    [ngClass]="{ 'is-invalid': submitted && f.publicacion.errors }">
+                <div class="alert alert-danger" role="alert" *ngIf="submitted && f.publicacion.errors">
+                    <div *ngIf="f.publicacion.errors.required">
+                        Es necesario la informacion de la publicación (lugar, fecha)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="paginas" class="col-sm-2 form-label">paginas</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" id="paginas" formControlName="paginas"
+                    [ngClass]="{ 'is-invalid': submitted && f.paginas.errors }">
+                <div class="alert alert-danger" role="alert" *ngIf="submitted && f.paginas.errors">
+                    <div *ngIf="f.paginas.errors.required">
+                        Es necesaria la cantidad de paginas de la publicación
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="autores" class="col-sm-2 form-label">autores</label>
+            <button class="btn btn-alert col-sm-1" (click)="addAutor()">
+                <mat-icon>library_add</mat-icon>
+            </button>
+            <div class="col-sm-9" formArrayName="autores">
+                <div *ngFor="let item of autorControler.controls; let pointIndex=index" [formGroupName]="pointIndex">
+                    <input class="form-control" list="autoresl" formControlName="autor" placeholder="Buscar autor...">
+                    <datalist id="autoresl">
+                        <ng-container *ngFor="let item of listaAutores">
+                            <option value="{{item.nombres}} {{item.apellidos}} - {{item.identificacion}}">
+                        </ng-container>
+                    </datalist>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="resumen" class="col-sm-2 form-label">Resumen</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" id="resumen" rows="3" formControlName="resumen"
+                    [ngClass]="{ 'is-invalid': submitted && f.resumen.errors }"></textarea>
+                <div class="alert alert-danger" role="alert" *ngIf="submitted && f.resumen.errors">
+                    <div *ngIf="f.resumen.errors.required">
+                        El resumen de articulo es importante
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-around">
+            <div class="col-4">
+                <button class="col-4" type="submit" class="btn btn-success" (click)="onSubmit()">Guardar</button>
+            </div>
+
+        </div>
+    </form>
+</div>

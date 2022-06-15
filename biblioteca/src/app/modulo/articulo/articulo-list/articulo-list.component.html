@@ -29,11 +29,10 @@
                             </ng-container>
                         </td>
                         <td>
-                            <button class="btn btn-success">editar
-                                <!-- 
-                                [routerLink]="['/biblioteca/libros/editar/', libro.ISBN]" -->
+                            <button class="btn btn-success" [routerLink]="['/biblioteca/articulo/editar/', articulo.issn]">editar
+                               
                             </button>
-                            <button class="btn btn-danger">eliminar</button>
+                            <button class="btn btn-danger" (click)="eliminarLibro(articulo)">eliminar</button>
                         </td>
                     </tr>
                 </ng-container>

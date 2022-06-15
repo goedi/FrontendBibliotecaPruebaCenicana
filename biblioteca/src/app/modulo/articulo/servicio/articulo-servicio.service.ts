@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Articulo } from 'src/app/modelo/Articulo';
 import { environment } from 'src/environments/environment';
 
@@ -23,7 +24,7 @@ export class ArticuloServicioService {
   get refresh$() {
     return this._refresh$
   }
-  
+
   listaAutores(): Observable<any> {
     return this.httpClient.get<any>(`${this.URL}/autor/list`)
   }
@@ -32,7 +33,25 @@ export class ArticuloServicioService {
     return this.httpClient.get<any>(`${this.URL}/articulo/list`)
   }
 
-  crearArticulo(articulo: Articulo): Observable<any>{
+  crearArticulo(articulo: Articulo): Observable<any> {
     return this.httpClient.post<any>(`${this.URL}/articulo/create`, articulo)
+  }
+
+  buscarUnArticulo(issn: string): Observable<any> {
+    return this.httpClient.get<any>(`${this.URL}/articulo/buscar/${issn}`)
+  }
+
+  updateArticulo(articulo: Articulo): Observable<any>{
+    return this.httpClient.post<any>(`${this.URL}/articulo/update`, articulo)
+  }
+
+  deleteArticulo(articulo: Articulo):Observable<any>{
+    return this.httpClient.post<any>(`${this.URL}/articulo/delete`, articulo).pipe(
+      tap(
+        () => {
+          this._refresh$.next()
+        }
+      )
+    )
   }
 }
