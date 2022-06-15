@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Libro } from 'src/app/modelo/Libro';
 import { LibroServiceService } from '../servicio/libro-service.service';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './libro-list.component.html',
   styleUrls: ['./libro-list.component.css']
 })
-export class LibroListComponent implements OnInit {
+export class LibroListComponent implements OnInit, OnDestroy {
 
   libros: Libro[] = new Array
   private suscription: Subscription = new Subscription
