@@ -17,6 +17,7 @@ import { LibroEditComponent } from './modulo/libro/libro-edit/libro-edit.compone
 import { ArticuloListComponent } from './modulo/articulo/articulo-list/articulo-list.component';
 import { ArticuloCreateComponent } from './modulo/articulo/articulo-create/articulo-create.component';
 import { ArticuloUpdateComponent } from './modulo/articulo/articulo-update/articulo-update.component';
+import { EscritosListComponent } from './modulo/autor/escritos-list/escritos-list.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ArticuloUpdateComponent } from './modulo/articulo/articulo-update/artic
     LibroEditComponent,
     ArticuloListComponent,
     ArticuloCreateComponent,
-    ArticuloUpdateComponent
+    ArticuloUpdateComponent,
+    EscritosListComponent
   ],
   imports: [
     BrowserModule,
