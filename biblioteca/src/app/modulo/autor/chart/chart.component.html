@@ -1,0 +1,35 @@
+<p>chart works!</p>
+<div class="container">
+    <div>
+        <form [formGroup]="autores">
+            <div class="mb-3 row">
+                <label for="autor" class="col-sm-2 form-label">autores</label>
+                <div class="col-sm-9">
+                    <input class="form-control" list="autoresl" formControlName="autor"
+                        placeholder="Buscar autor...">
+                    <datalist id="autoresl">
+                        <ng-container *ngFor="let item of listaAutores">
+                            <option value="{{item.nombres}} {{item.apellidos}} - {{item.identificacion}}">
+                        </ng-container>
+                    </datalist>
+                </div>
+                <div class="col-sm-1">
+                    <button class="btn btn-alert " (click)="selectAutores()">
+                        <mat-icon>search</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-8">
+      <div style="display: block">
+        <canvas baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          
+          [type]="barChartType">
+        </canvas>
+      </div>
+      
+    </div>
+  </div>

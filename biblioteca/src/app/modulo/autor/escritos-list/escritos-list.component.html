@@ -1,1 +1,63 @@
-<p>escritos-list works!</p>
+<div class="container">
+    <br>
+    <h2>Informes</h2>
+    <mat-tab-group>
+        <mat-tab label="Publicaciones por autor">
+            <div class="container">
+                <form [formGroup]="autores">
+                    <div class="mb-3 row">
+                        <label for="autor" class="col-sm-2 form-label">autores</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" list="autoresl" formControlName="autor"
+                                placeholder="Buscar autor...">
+                            <datalist id="autoresl">
+                                <ng-container *ngFor="let item of listaAutores">
+                                    <option value="{{item.nombres}} {{item.apellidos}} - {{item.identificacion}}">
+                                </ng-container>
+                            </datalist>
+                        </div>
+                        <div class="col-sm-1">
+                            <button class="btn btn-alert " (click)="selectAutores()">
+                                <mat-icon>search</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col md-2" for="buscar">
+                            <label for="">Buscar en la tabla</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="buscar" formControlName="buscar" (keyup)="applyFilter($event)">
+                        </div>
+                    </div>
+                </form>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Codigo</th>
+                                <th scope="col">Titulo</th>
+                                <th scope="col">Fecha publicacion</th>
+                                <th scope="col">tipo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let articulo of publicacion">
+                                <tr>
+                                    <td> {{articulo.codigo}} </td>
+                                    <td> {{articulo.titulo}} </td>
+                                    <td> {{articulo.fecha }} </td>
+                                    <td> {{articulo.tipo}} </td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Publicaciones por año"> 
+            <app-chart></app-chart>
+        </mat-tab>
+    </mat-tab-group>
+</div>

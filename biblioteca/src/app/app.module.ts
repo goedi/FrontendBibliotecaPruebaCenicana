@@ -18,7 +18,9 @@ import { ArticuloListComponent } from './modulo/articulo/articulo-list/articulo-
 import { ArticuloCreateComponent } from './modulo/articulo/articulo-create/articulo-create.component';
 import { ArticuloUpdateComponent } from './modulo/articulo/articulo-update/articulo-update.component';
 import { EscritosListComponent } from './modulo/autor/escritos-list/escritos-list.component';
-
+import {MatTabsModule} from '@angular/material/tabs';
+import { ChartComponent } from './modulo/autor/chart/chart.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { EscritosListComponent } from './modulo/autor/escritos-list/escritos-lis
     ArticuloListComponent,
     ArticuloCreateComponent,
     ArticuloUpdateComponent,
-    EscritosListComponent
+    EscritosListComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,8 @@ import { EscritosListComponent } from './modulo/autor/escritos-list/escritos-lis
     MatMenuModule,
     MatDialogModule,
     MatIconModule,
+    MatTabsModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
